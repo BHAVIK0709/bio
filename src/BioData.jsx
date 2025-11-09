@@ -1,538 +1,205 @@
-import React, { useMemo, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-import {
-  Printer,
-  Phone,
-  Mail,
-  MapPin,
-  Calendar,
-  User,
-  Heart,
-  Languages,
-  Image as ImageIcon,
-} from "lucide-react";
 import { motion } from "framer-motion";
+import Profile from "./PP.jpg";
+import ProfileSit from "./MtPic.jpg";
+import Professional from "./Professnioll.jpg";
 
-/**
- * ⚡ How to use
- * 1) Fill the `PROFILE` object below with your exact details.
- * 2) Replace the placeholder profile photo URL.
- * 3) Click the "Print / Save as PDF" button to export and share.
- * 4) Toggle English/Gujarati with the language button.
- *
- * Notes
- * - Fully responsive (mobile-first).
- * - Clean, elegant typography; large tap targets.
- * - Ready for shadcn/ui + Tailwind projects. (Tailwind required)
- */
+export default function BiodataProfile() {
+  // --- Replace this URL with your actual photo link (any public image URL works)
+  const photoUrl =
+    "https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=600&auto=format&fit=crop";
 
-// ====== YOUR DATA STARTS HERE ======
-const PROFILE = {
-  // Basic
-  fullName: "Bhavik Panchal", // ← update if needed
-  gender: "Male",
-  dob: "",
-  birthTime: "",
-  birthPlace: "",
-  height: "",
-  weight: "",
-  bloodGroup: "",
-  maritalStatus: "Never Married",
-  motherTongue: "Gujarati",
-  caste: "",
-  subCaste: "",
-  gotra: "",
-  manglik: "",
+  const Photos = [Profile, ProfileSit, Professional];
 
-  // Education & Career
-  education: "",
-  occupation: "",
-  employer: "",
-  income: "",
-  workLocation: "",
-
-  // Family
-  fatherName: "",
-  fatherOccupation: "",
-  motherName: "",
-  motherOccupation: "",
-  brothers: "",
-  sisters: "",
-  familyType: "",
-  nativePlace: "",
-  address: "",
-
-  // Lifestyle / Preferences
-  diet: "",
-  smoke: "",
-  drink: "",
-  hobbies: "",
-  partnerPreferences: {
-    age: "",
-    height: "",
-    education: "",
-    religionCaste: "",
-    location: "",
-    other: "",
-  },
-
-  // Horoscope (Optional)
-  horoscope: {
-    rashi: "",
-    nakshatra: "",
-    gotra: "",
-    horoscopeMatchRequired: "",
-  },
-
-  // Contact
-  phone: "",
-  email: "",
-  whatsapp: "",
-  contactPerson: "",
-
-  // Media
-  photoUrl:
-    "https://images.unsplash.com/photo-1500043357865-c6b8827edf39?q=80&w=1200&auto=format&fit=crop", // replace with your photo
-  gallery: [
-    // optional more images
-  ],
-};
-// ====== YOUR DATA ENDS HERE ======
-
-const LABELS = {
-  en: {
-    personal: "Personal Details",
-    education: "Education & Career",
-    family: "Family Details",
-    lifestyle: "Lifestyle & Preferences",
-    partner: "Partner Preferences",
-    horoscope: "Horoscope",
-    contact: "Contact",
-    print: "Print / Save as PDF",
-    download: "Download Card",
-    switch: "ગુજરાતી",
-  },
-  gu: {
-    personal: "વ્યક્તિગત વિગતો",
-    education: "શિક્ષણ અને કારકિર્દી",
-    family: "પરિવારની માહિતી",
-    lifestyle: "જીવનશૈલી અને પસંદગીઓ",
-    partner: "જીવનસાથી માટેની પસંદગીઓ",
-    horoscope: "કુંડળી",
-    contact: "સંપર્ક",
-    print: "પ્રિન્ટ / PDF સંગ્રહ કરો",
-    download: "કાર્ડ ડાઉનલોડ",
-    switch: "English",
-  },
-};
-
-// A compact line item used across sections
-function Line({ icon: Icon, label, value }) {
-  if (!value) return null;
-  return (
-    <div className="flex items-start gap-2 text-sm sm:text-base">
-      {Icon && <Icon className="h-4 w-4 mt-1 shrink-0" />}
-      <div>
-        <span className="font-medium text-muted-foreground mr-1">{label}:</span>
-        <span className="text-foreground">{value}</span>
-      </div>
-    </div>
-  );
-}
-
-// A pretty divider
-const SectionTitle = ({ children }) => (
-  <div className="flex items-center gap-3 my-4">
-    <div className="h-px flex-1 bg-muted" />
-    <h3 className="text-lg sm:text-xl font-semibold tracking-tight">
-      {children}
-    </h3>
-    <div className="h-px flex-1 bg-muted" />
-  </div>
-);
-
-export default function MarriageBioData() {
-  const [lang, setLang] = useState("en");
-  const t = useMemo(() => LABELS[lang], [lang]);
-
-  const printPDF = () => {
-    window.print();
+  const personal = {
+    Name: "Bhavik  Panchal",
+    Gender: "Male",
+    "Date Of Birth": "07-09-2000",
+    "Place Of Birth": "Ahmedabad",
+    Rashi: "Dhanur (Sagittarius)",
+    Nakshatra: "Mula",
+    Height: "5 feet 9 inches (175 cm)",
+    "Marital Status": "Single",
+    Religion: "Hindu",
+    "Mother Tongue": "Gujarati",
+    Caste: "Hindu Luhar",
+    Village: "Jakha (Patan)",
+    Education: "Bachelor Of Engineering (Computer Engg.)",
+    "College Name": "Sal Institute of Engineering",
+    "Job/Occupation": "Software Engineer",
+    "Organization Name": "Tridhya Tech Limited",
+    Hobbies: "Travelling, Cricket, Movies ,Gaming",
   };
 
+  const family = {
+    "Father's Name": "Panchal Dineshbhai Virchandas",
+    "Father's Occupation": "Vishwakarma Engineering & Fabricators",
+    "Mother's Name": "Panchal Kalishaben Dineshbhai",
+    "Maternal Village": "Timbachudhi",
+    "Mother's Occupation": "Home maker",
+    "Little Brother": "Priyank",
+    "Sister (Married)": "Vaishaliben ",
+  };
+
+  const fade = {
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.06 } },
+  };
+
+  const Card = ({ title, children }) => (
+    <motion.div
+      variants={fade}
+      className="rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur shadow-sm hover:shadow-md transition-shadow"
+    >
+      <div className="p-5 md:p-6">
+        <h3 className="text-lg md:text-xl font-semibold tracking-tight text-slate-800 flex items-center gap-2">
+          <span className="inline-block h-2 w-2 rounded-full bg-indigo-500"></span>
+          {title}
+        </h3>
+        <div className="mt-4 space-y-3 text-sm md:text-base text-slate-700">
+          {children}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const Field = ({ label, value }) => (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4">
+      <div className="font-medium text-slate-600">{label}</div>
+      <div className="sm:col-span-2 text-slate-800">{value}</div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
-      {/* Canvas width container */}
-      <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-slate-50 to-purple-50">
+      <div className="mx-auto max-w-6xl px-4 py-10 md:py-14">
         {/* Header */}
         <motion.header
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-between gap-4 mb-4 sm:mb-6"
+          transition={{ duration: 0.6 }}
+          className="mb-8 md:mb-12"
         >
-          <div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              {PROFILE.fullName}
-            </h1>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              {PROFILE.occupation || ""}{" "}
-              {PROFILE.employer ? `@ ${PROFILE.employer}` : ""}
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Button
-              onClick={() => setLang(lang === "en" ? "gu" : "en")}
-              variant="secondary"
-              className="rounded-2xl"
-            >
-              <Languages className="h-4 w-4 mr-2" /> {t.switch}
-            </Button>
-            <Button onClick={printPDF} className="rounded-2xl">
-              <Printer className="h-4 w-4 mr-2" /> {t.print}
-            </Button>
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6">
+            <div className="relative">
+              <motion.img
+                src={photoUrl}
+                alt="Profile"
+                className="h-36 w-36 md:h-44 md:w-44 object-cover rounded-2xl shadow-md ring-2 ring-white"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
+              <span className="absolute -bottom-2 -right-2 rounded-full bg-indigo-600 text-white text-xs px-3 py-1 shadow">
+                Software Engineer
+              </span>
+            </div>
+
+            <div className="flex-1 text-center md:text-left">
+              <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
+                {personal["Name"]}
+              </h1>
+              {/* <p className="mt-2 text-slate-600 max-w-2xl">
+                Detail‑oriented developer with a passion for clean UI and
+                performance.
+              </p> */}
+
+              {/* Quick chips */}
+            </div>
           </div>
         </motion.header>
 
-        {/* Hero Card */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
+        {/* Body */}
+        <motion.main
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6"
         >
-          <Card className="overflow-hidden border-0 shadow-xl rounded-2xl">
-            <div className="grid grid-cols-1 sm:grid-cols-[180px,1fr]">
-              {/* Photo */}
-              <div className="relative aspect-[4/5] sm:aspect-auto">
-                {PROFILE.photoUrl ? (
-                  <img
-                    src={PROFILE.photoUrl}
-                    alt={PROFILE.fullName}
-                    className="object-cover h-full w-full"
-                  />
-                ) : (
-                  <div className="h-full w-full grid place-items-center bg-muted">
-                    <ImageIcon className="h-8 w-8" />
-                  </div>
+          <div className="lg:col-span-2 space-y-5 md:space-y-6">
+            <Card title="Personal Details">
+              <div className="space-y-3 text-left">
+                {Object.entries(personal).map(
+                  ([k, v]) =>
+                    k !== "Name" && <Field key={k} label={k} value={v} />
                 )}
               </div>
-
-              {/* Summary */}
-              <CardContent className="p-4 sm:p-6">
-                <div className="grid gap-2 text-sm sm:text-base">
-                  <Line
-                    icon={User}
-                    label={lang === "en" ? "Gender" : "લિંગ"}
-                    value={PROFILE.gender}
-                  />
-                  <Line
-                    icon={Calendar}
-                    label={lang === "en" ? "Date of Birth" : "જન્મ તારીખ"}
-                    value={PROFILE.dob}
-                  />
-                  <Line
-                    icon={MapPin}
-                    label={lang === "en" ? "Birth Place" : "જન્મ સ્થળ"}
-                    value={PROFILE.birthPlace}
-                  />
-                  <Line
-                    icon={MapPin}
-                    label={lang === "en" ? "Current City" : "હાલનું શહેર"}
-                    value={PROFILE.workLocation}
-                  />
-                  <Line
-                    icon={Heart}
-                    label={lang === "en" ? "Marital Status" : "વૈવાહિક સ્થિતિ"}
-                    value={PROFILE.maritalStatus}
-                  />
-                </div>
-
-                {/* Contact quick row */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {PROFILE.phone && (
-                    <a href={`tel:${PROFILE.phone}`}>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-2xl"
-                      >
-                        <Phone className="h-4 w-4 mr-2" /> {PROFILE.phone}
-                      </Button>
-                    </a>
-                  )}
-                  {PROFILE.email && (
-                    <a href={`mailto:${PROFILE.email}`}>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-2xl"
-                      >
-                        <Mail className="h-4 w-4 mr-2" /> {PROFILE.email}
-                      </Button>
-                    </a>
-                  )}
-                </div>
-              </CardContent>
-            </div>
-          </Card>
-        </motion.div>
-
-        {/* Sections */}
-        <div className="mt-6 grid gap-6">
-          {/* Personal */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.personal}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                label={lang === "en" ? "Height" : "ઊંચાઈ"}
-                value={PROFILE.height}
-              />
-              <Line
-                label={lang === "en" ? "Weight" : "વજન"}
-                value={PROFILE.weight}
-              />
-              <Line
-                label={lang === "en" ? "Blood Group" : "બ્લડ ગ્રૂપ"}
-                value={PROFILE.bloodGroup}
-              />
-              <Line
-                label={lang === "en" ? "Mother Tongue" : "માતૃભાષા"}
-                value={PROFILE.motherTongue}
-              />
-              <Line
-                label={lang === "en" ? "Caste" : "જાતિ"}
-                value={PROFILE.caste}
-              />
-              <Line
-                label={lang === "en" ? "Sub Caste" : "ઉપ-જાતિ"}
-                value={PROFILE.subCaste}
-              />
-              <Line
-                label={lang === "en" ? "Gotra" : "ગોત્ર"}
-                value={PROFILE.gotra}
-              />
-              <Line
-                label={lang === "en" ? "Manglik" : "માંગલિક"}
-                value={PROFILE.manglik}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Education & Career */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.education}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                label={lang === "en" ? "Education" : "શિક્ષણ"}
-                value={PROFILE.education}
-              />
-              <Line
-                label={lang === "en" ? "Occupation" : "વ્યવસાય"}
-                value={PROFILE.occupation}
-              />
-              <Line
-                label={lang === "en" ? "Employer" : "નોકરીસ્થળ"}
-                value={PROFILE.employer}
-              />
-              <Line
-                label={lang === "en" ? "Income" : "આવક"}
-                value={PROFILE.income}
-              />
-              <Line
-                label={lang === "en" ? "Work Location" : "કામનું સ્થળ"}
-                value={PROFILE.workLocation}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Family */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.family}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                label={lang === "en" ? "Father's Name" : "પિતાજીનું નામ"}
-                value={PROFILE.fatherName}
-              />
-              <Line
-                label={
-                  lang === "en" ? "Father's Occupation" : "પિતાની નોકરી/ધંધો"
-                }
-                value={PROFILE.fatherOccupation}
-              />
-              <Line
-                label={lang === "en" ? "Mother's Name" : "માતા શી નામ"}
-                value={PROFILE.motherName}
-              />
-              <Line
-                label={
-                  lang === "en" ? "Mother's Occupation" : "માતા નો વ્યવસાય"
-                }
-                value={PROFILE.motherOccupation}
-              />
-              <Line
-                label={lang === "en" ? "Brothers" : "ભાઈ"}
-                value={PROFILE.brothers}
-              />
-              <Line
-                label={lang === "en" ? "Sisters" : "બહેનો"}
-                value={PROFILE.sisters}
-              />
-              <Line
-                label={lang === "en" ? "Family Type" : "પરિવારનો પ્રકાર"}
-                value={PROFILE.familyType}
-              />
-              <Line
-                label={lang === "en" ? "Native Place" : "મૂળ ગામ"}
-                value={PROFILE.nativePlace}
-              />
-              <Line
-                icon={MapPin}
-                label={lang === "en" ? "Address" : "સરનામું"}
-                value={PROFILE.address}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Lifestyle / Preferences */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.lifestyle}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                label={lang === "en" ? "Diet" : "આહાર"}
-                value={PROFILE.diet}
-              />
-              <Line
-                label={lang === "en" ? "Smoking" : "ધુમ્રપાન"}
-                value={PROFILE.smoke}
-              />
-              <Line
-                label={lang === "en" ? "Alcohol" : "મદિરાપાન"}
-                value={PROFILE.drink}
-              />
-              <Line
-                label={lang === "en" ? "Hobbies" : "શોખ"}
-                value={PROFILE.hobbies}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Partner Preferences */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.partner}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                label={lang === "en" ? "Age" : "ઉંમર"}
-                value={PROFILE.partnerPreferences.age}
-              />
-              <Line
-                label={lang === "en" ? "Height" : "ઊંચાઈ"}
-                value={PROFILE.partnerPreferences.height}
-              />
-              <Line
-                label={lang === "en" ? "Education" : "શિક્ષણ"}
-                value={PROFILE.partnerPreferences.education}
-              />
-              <Line
-                label={lang === "en" ? "Religion/Caste" : "ધર્મ/જાતિ"}
-                value={PROFILE.partnerPreferences.religionCaste}
-              />
-              <Line
-                label={lang === "en" ? "Location" : "સ્થળ"}
-                value={PROFILE.partnerPreferences.location}
-              />
-              <Line
-                label={lang === "en" ? "Other" : "અન્ય"}
-                value={PROFILE.partnerPreferences.other}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Horoscope (optional block will hide if empty) */}
-          {(PROFILE.horoscope?.rashi ||
-            PROFILE.horoscope?.nakshatra ||
-            PROFILE.horoscope?.horoscopeMatchRequired) && (
-            <Card className="rounded-2xl">
-              <CardHeader>
-                <CardTitle>{t.horoscope}</CardTitle>
-              </CardHeader>
-              <CardContent className="grid sm:grid-cols-2 gap-3">
-                <Line
-                  label={lang === "en" ? "Rashi" : "રાશિ"}
-                  value={PROFILE.horoscope?.rashi}
-                />
-                <Line
-                  label={lang === "en" ? "Nakshatra" : "નક્ષત્ર"}
-                  value={PROFILE.horoscope?.nakshatra}
-                />
-                <Line
-                  label={lang === "en" ? "Gotra" : "ગોત્ર"}
-                  value={PROFILE.horoscope?.gotra}
-                />
-                <Line
-                  label={
-                    lang === "en" ? "Match Required" : "માત્ર કુંડળી મેળાપ"
-                  }
-                  value={PROFILE.horoscope?.horoscopeMatchRequired}
-                />
-              </CardContent>
             </Card>
-          )}
 
-          {/* Contact */}
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>{t.contact}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-3">
-              <Line
-                icon={Phone}
-                label={lang === "en" ? "Phone" : "ફોન"}
-                value={PROFILE.phone}
-              />
-              <Line
-                icon={Mail}
-                label={lang === "en" ? "Email" : "ઇમેઇલ"}
-                value={PROFILE.email}
-              />
-              <Line
-                icon={User}
-                label={lang === "en" ? "Contact Person" : "સંપર્ક વ્યક્તિ"}
-                value={PROFILE.contactPerson}
-              />
-              <Line
-                icon={Phone}
-                label={lang === "en" ? "WhatsApp" : "વોટ્સએપ"}
-                value={PROFILE.whatsapp}
-              />
-            </CardContent>
-          </Card>
-        </div>
+            <Card title="Family Details">
+              <div className="space-y-3 text-left">
+                {Object.entries(family).map(([k, v]) => (
+                  <Field key={k} label={k} value={v} />
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          {/* Side card */}
+          <div className="space-y-5 md:space-y-6">
+            <Card title="At a Glance">
+              <ul className="space-y-2 text-slate-700">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>{" "}
+                  {personal["Height"]}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>{" "}
+                  {personal["Rashi"]} • {personal["Nakshatra"]}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>{" "}
+                  Likes {personal["Hobbies"]}
+                </li>
+              </ul>
+            </Card>
+            <Card title="Contact">
+              <div className="space-y-3 text-sm text-left">
+                <div className="grid grid-cols-3 gap-3">
+                  <span className="text-slate-600">Email</span>
+                  <span className="col-span-2 break-all">
+                    bhavikdpanchal7090@gmail.com
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <span className="text-slate-600">My Phone</span>
+                  <span className="col-span-2">+91-8758709628</span>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <span className="text-slate-600">Father's Phone</span>
+                  <span className="col-span-2">+91-9825786628</span>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <span className="text-slate-600">Location</span>
+                  <span className="col-span-2">
+                    {" "}
+                    42-Shree hari bunglows-2 , Vastral , Ahmedabad, Gujarat
+                  </span>
+                </div>
+              </div>
+            </Card>
+            {Photos.map((m, i) => (
+              <img src={m}></img>
+            ))}
+            ;
+          </div>
+        </motion.main>
 
         {/* Footer */}
-        <footer className="py-8 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {PROFILE.fullName} · Marriage Biodata
-        </footer>
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-10 md:mt-12 text-center text-xs text-slate-500"
+        >
+          © {new Date().getFullYear()} Bhavik Panchal · Marriage Biodata
+        </motion.footer>
       </div>
-
-      {/* Print styles */}
-      <style>{`
-        @media print {
-          button, a, .no-print { display: none !important; }
-          .shadow-xl { box-shadow: none !important; }
-          body { background: white !important; }
-        }
-      `}</style>
     </div>
   );
 }
